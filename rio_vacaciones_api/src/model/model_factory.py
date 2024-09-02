@@ -113,7 +113,6 @@ class RioVacation:
                 # Marca como anomalia se o Z-score for maior que 1
                 input_df.at[index, 'anomaly'] = 1 if abs(price_z_score) > 1 else 0
 
-
         # Reverte a normalização dos dados para os valores originais
         input_df = self.__inverse_transform(input_df)
         return input_df

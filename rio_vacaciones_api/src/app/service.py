@@ -21,4 +21,5 @@ predictor = RioVacationPredictor('artifacts/models/rio_vac_scale_n_predict.pkl')
 async def predict(items_object: Items):
     input_df = pd.DataFrame([item.model_dump() for item in items_object.items])
     output_df = predictor.predict(input_df)
+    output_df.drop('cluster_knn', axis=1, inplace=True)
     return output_df.to_dict(orient='records')
